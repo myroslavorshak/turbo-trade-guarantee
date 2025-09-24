@@ -38,6 +38,10 @@ All colors MUST be HSL.
     --urgency: 25 95% 53%;
     --urgency-foreground: 0 0% 100%;
 
+    /* Nissan brand red */
+    --nissan-red: 0 84% 48%;
+    --nissan-red-foreground: 0 0% 98%;
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
@@ -103,6 +107,9 @@ All colors MUST be HSL.
 
     --urgency: 25 95% 63%;
     --urgency-foreground: 222.2 84% 4.9%;
+
+    --nissan-red: 0 84% 58%;
+    --nissan-red-foreground: 222.2 84% 4.9%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;

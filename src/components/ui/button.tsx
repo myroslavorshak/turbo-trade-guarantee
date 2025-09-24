@@ -18,6 +18,7 @@ const buttonVariants = cva(
         hero: "bg-gradient-hero text-primary-foreground hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-xl",
         success: "bg-gradient-success text-success-foreground hover:scale-105 transform transition-all duration-300",
         urgency: "bg-urgency text-urgency-foreground hover:bg-urgency/90 animate-pulse",
+        nissan: "bg-nissan text-nissan-foreground shadow hover:bg-nissan/90",
         calculator: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-calculator",
       },
       size: {

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle } from "lucide-react";
 import logo from "@/assets/old-orchard-nissan-logo.png";
+import { AppointmentForm } from "@/components/forms/AppointmentForm";
 
 export const Header = () => {
   const handlePhoneCall = () => {
@@ -74,15 +75,16 @@ export const Header = () => {
           </Button>
 
           {/* Book Appointment CTA */}
-          <Button 
-            variant="default"
-            size="sm"
-            onClick={handleBookAppointment}
-            className="font-semibold"
-          >
-            <span className="hidden sm:inline">Book My Appointment</span>
-            <span className="sm:hidden">Book Now</span>
-          </Button>
+          <AppointmentForm>
+            <Button 
+              variant="nissan"
+              size="sm"
+              className="font-semibold"
+            >
+              <span className="hidden sm:inline">Book My Appointment</span>
+              <span className="sm:hidden">Book Now</span>
+            </Button>
+          </AppointmentForm>
         </div>
       </div>
     </header>

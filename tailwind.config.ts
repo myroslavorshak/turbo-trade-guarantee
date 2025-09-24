@@ -47,6 +47,10 @@ export default {
           DEFAULT: "hsl(var(--urgency))",
           foreground: "hsl(var(--urgency-foreground))",
         },
+        nissan: {
+          DEFAULT: "hsl(var(--nissan-red))",
+          foreground: "hsl(var(--nissan-red-foreground))",
+        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",

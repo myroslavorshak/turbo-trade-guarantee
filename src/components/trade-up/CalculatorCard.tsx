@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { DollarSign, TrendingUp } from "lucide-react";
+import { TradeValueForm } from "@/components/forms/TradeValueForm";
 
 const ILLINOIS_COUNTIES = [
   "Cook", "DuPage", "Lake", "Will", "Kane", "McHenry", "Winnebago", 
@@ -129,17 +130,20 @@ export const CalculatorCard = () => {
               )}
 
               <div className="text-center pt-4">
-                <Button 
-                  variant="calculator" 
-                  size="lg" 
-                  className="w-full md:w-auto"
-                  onClick={() => {
-                    const offerLock = document.getElementById('offer-lock-flow');
-                    offerLock?.scrollIntoView({ behavior: 'smooth' });
-                  }}
+                <TradeValueForm 
+                  tradeValue={tradeValue}
+                  newCarPrice={newCarPrice}
+                  selectedCounty={selectedCounty}
+                  taxSavings={taxSavings}
                 >
-                  Lock In My Trade Value
-                </Button>
+                  <Button 
+                    variant="calculator" 
+                    size="lg" 
+                    className="w-full md:w-auto"
+                  >
+                    Lock In My Trade Value
+                  </Button>
+                </TradeValueForm>
               </div>
 
               <div className="text-xs text-muted-foreground text-center space-y-1">
