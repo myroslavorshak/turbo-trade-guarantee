@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Clock, Shield, Calculator } from "lucide-react";
-import heroImage from "@/assets/dealership-hero.jpg";
+import heroImage from "@/assets/dealership-hero-new.jpg";
 
 export const HeroSection = () => {
   const scrollToCalculator = () => {

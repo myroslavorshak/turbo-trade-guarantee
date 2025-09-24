@@ -6,7 +6,7 @@
     "year": 2024,
     "price": 28500,
     "bodyType": "Sedan",
-    "image": "/api/placeholder/400/300",
+    "image": "nissan-altima-2024",
     "bundleEligible": true,
     "features": ["CVT Transmission", "Safety Shield 360", "Apple CarPlay"]
   },
@@ -17,7 +17,7 @@
     "year": 2024,
     "price": 32750,
     "bodyType": "SUV",
-    "image": "/api/placeholder/400/300",
+    "image": "nissan-rogue-2024",
     "bundleEligible": true,
     "features": ["ProPILOT Assist", "Panoramic Moonroof", "AWD"]
   },
@@ -28,7 +28,7 @@
     "year": 2024,
     "price": 21990,
     "bodyType": "Sedan",
-    "image": "/api/placeholder/400/300",
+    "image": "nissan-sentra-2024",
     "bundleEligible": true,
     "features": ["SR Turbo Engine", "Bose Audio", "Intelligent Key"]
   },
@@ -39,7 +39,7 @@
     "year": 2024,
     "price": 39900,
     "bodyType": "SUV",
-    "image": "/api/placeholder/400/300",
+    "image": "nissan-murano-2024",
     "bundleEligible": true,
     "features": ["V6 Engine", "Zero Gravity Seats", "Remote Engine Start"]
   },
@@ -50,7 +50,7 @@
     "year": 2024,
     "price": 42500,
     "bodyType": "SUV",
-    "image": "/api/placeholder/400/300",
+    "image": "nissan-pathfinder-2024",
     "bundleEligible": true,
     "features": ["3-Row Seating", "Tow Package", "Wireless Charging"]
   },
@@ -61,7 +61,7 @@
     "year": 2024,
     "price": 38900,
     "bodyType": "Sedan",
-    "image": "/api/placeholder/400/300",
+    "image": "nissan-maxima-2024",
     "bundleEligible": true,
     "features": ["V6 Engine", "Sport-Tuned Suspension", "Premium Interior"]
   }

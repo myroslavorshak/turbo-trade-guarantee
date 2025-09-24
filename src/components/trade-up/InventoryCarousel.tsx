@@ -5,6 +5,14 @@ import { ChevronLeft, ChevronRight, Car } from "lucide-react";
 import { useState } from "react";
 import inventoryData from "@/data/inventory.json";
 
+// Import vehicle images
+import nissanAltima from "@/assets/vehicles/nissan-altima-2024.jpg";
+import nissanRogue from "@/assets/vehicles/nissan-rogue-2024.jpg";
+import nissanSentra from "@/assets/vehicles/nissan-sentra-2024.jpg";
+import nissanMurano from "@/assets/vehicles/nissan-murano-2024.jpg";
+import nissanPathfinder from "@/assets/vehicles/nissan-pathfinder-2024.jpg";
+import nissanMaxima from "@/assets/vehicles/nissan-maxima-2024.jpg";
+
 interface Vehicle {
   id: number;
   make: string;
@@ -19,6 +27,16 @@ interface Vehicle {
 
 export const InventoryCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  
+  // Image mapping
+  const imageMap: Record<string, string> = {
+    "nissan-altima-2024": nissanAltima,
+    "nissan-rogue-2024": nissanRogue,
+    "nissan-sentra-2024": nissanSentra,
+    "nissan-murano-2024": nissanMurano,
+    "nissan-pathfinder-2024": nissanPathfinder,
+    "nissan-maxima-2024": nissanMaxima
+  };
   
   // Filter vehicles that match popular trade body types (SUVs and Sedans)
   const suggestedVehicles = inventoryData.filter((vehicle: Vehicle) => 
@@ -51,7 +69,7 @@ export const InventoryCarousel = () => {
               <Card key={vehicle.id} className="shadow-card hover:shadow-lg transition-shadow">
                 <div className="relative">
                   <img 
-                    src={vehicle.image} 
+                    src={imageMap[vehicle.image] || vehicle.image} 
                     alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
                     className="w-full h-48 object-cover rounded-t-lg"
                   />
