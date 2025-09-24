@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/trade-up/HeroSection";
 import { CalculatorCard } from "@/components/trade-up/CalculatorCard";
 import { OfferLockFlow } from "@/components/trade-up/OfferLockFlow";
@@ -33,6 +34,7 @@ const TradeUp = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Header />
       <HeroSection />
       <CalculatorCard />
       <OfferLockFlow />
