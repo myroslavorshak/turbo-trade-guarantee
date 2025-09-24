@@ -4,8 +4,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { DollarSign, TrendingUp } from "lucide-react";
+import { DollarSign, TrendingUp, AlertCircle } from "lucide-react";
 import { TradeValueForm } from "@/components/forms/TradeValueForm";
+import { useToast } from "@/hooks/use-toast";
+import { z } from "zod";
 
 const ILLINOIS_COUNTIES = [
   "Cook", "DuPage", "Lake", "Will", "Kane", "McHenry", "Winnebago", 
@@ -28,11 +30,32 @@ const TAX_RATES: Record<string, number> = {
   "Sangamon": 0.0825
 };
 
+// Validation schema for calculator fields
+const calculatorSchema = z.object({
+  tradeValue: z.string().trim().min(1, "Trade value is required").refine(
+    (val) => {
+      const num = parseFloat(val.replace(/[,$]/g, ''));
+      return !isNaN(num) && num > 0;
+    }, 
+    "Please enter a valid trade value"
+  ),
+  newCarPrice: z.string().trim().min(1, "New car price is required").refine(
+    (val) => {
+      const num = parseFloat(val.replace(/[,$]/g, ''));
+      return !isNaN(num) && num > 0;
+    }, 
+    "Please enter a valid new car price"
+  ),
+  selectedCounty: z.string().min(1, "Please select your Illinois county")
+});
+
 export const CalculatorCard = () => {
   const [tradeValue, setTradeValue] = useState("");
   const [newCarPrice, setNewCarPrice] = useState("");
   const [selectedCounty, setSelectedCounty] = useState("");
   const [taxSavings, setTaxSavings] = useState(0);
+  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
+  const { toast } = useToast();
 
   useEffect(() => {
     if (tradeValue && selectedCounty) {
@@ -53,11 +76,56 @@ export const CalculatorCard = () => {
   const handleTradeValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatted = formatCurrency(e.target.value);
     setTradeValue(formatted);
+    // Clear validation error when user starts typing
+    if (validationErrors.tradeValue) {
+      setValidationErrors(prev => ({ ...prev, tradeValue: "" }));
+    }
   };
 
   const handleNewCarPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatted = formatCurrency(e.target.value);
     setNewCarPrice(formatted);
+    // Clear validation error when user starts typing
+    if (validationErrors.newCarPrice) {
+      setValidationErrors(prev => ({ ...prev, newCarPrice: "" }));
+    }
+  };
+
+  const handleCountyChange = (value: string) => {
+    setSelectedCounty(value);
+    // Clear validation error when user selects
+    if (validationErrors.selectedCounty) {
+      setValidationErrors(prev => ({ ...prev, selectedCounty: "" }));
+    }
+  };
+
+  const validateFields = () => {
+    try {
+      calculatorSchema.parse({
+        tradeValue,
+        newCarPrice,
+        selectedCounty
+      });
+      setValidationErrors({});
+      return true;
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const newErrors: Record<string, string> = {};
+        error.issues.forEach((issue) => {
+          if (issue.path[0]) {
+            newErrors[issue.path[0] as string] = issue.message;
+          }
+        });
+        setValidationErrors(newErrors);
+        
+        toast({
+          title: "Please complete all required fields",
+          description: "Trade value, new car price, and county selection are required.",
+          variant: "destructive",
+        });
+      }
+      return false;
+    }
   };
 
   return (
@@ -75,7 +143,9 @@ export const CalculatorCard = () => {
             <CardContent className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="trade-value" className="text-sm font-semibold">Your Trade Value</Label>
+                  <Label htmlFor="trade-value" className="text-sm font-semibold">
+                    Your Trade Value <span className="text-destructive">*</span>
+                  </Label>
                   <div className="relative">
                     <DollarSign className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
                     <Input
@@ -83,13 +153,24 @@ export const CalculatorCard = () => {
                       placeholder="25,000"
                       value={tradeValue}
                       onChange={handleTradeValueChange}
-                      className="pl-10 text-lg font-semibold"
+                      className={`pl-10 text-lg font-semibold ${
+                        validationErrors.tradeValue ? "border-destructive focus:border-destructive" : ""
+                      }`}
+                      required
                     />
                   </div>
+                  {validationErrors.tradeValue && (
+                    <div className="flex items-center gap-1 text-destructive text-sm">
+                      <AlertCircle className="w-4 h-4" />
+                      {validationErrors.tradeValue}
+                    </div>
+                  )}
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="new-car-price" className="text-sm font-semibold">New Nissan Price</Label>
+                  <Label htmlFor="new-car-price" className="text-sm font-semibold">
+                    New Nissan Price <span className="text-destructive">*</span>
+                  </Label>
                   <div className="relative">
                     <DollarSign className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
                     <Input
@@ -97,16 +178,27 @@ export const CalculatorCard = () => {
                       placeholder="35,000"
                       value={newCarPrice}
                       onChange={handleNewCarPriceChange}
-                      className="pl-10 text-lg font-semibold"
+                      className={`pl-10 text-lg font-semibold ${
+                        validationErrors.newCarPrice ? "border-destructive focus:border-destructive" : ""
+                      }`}
+                      required
                     />
                   </div>
+                  {validationErrors.newCarPrice && (
+                    <div className="flex items-center gap-1 text-destructive text-sm">
+                      <AlertCircle className="w-4 h-4" />
+                      {validationErrors.newCarPrice}
+                    </div>
+                  )}
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="county" className="text-sm font-semibold">Illinois County</Label>
-                <Select value={selectedCounty} onValueChange={setSelectedCounty}>
-                  <SelectTrigger>
+                <Label htmlFor="county" className="text-sm font-semibold">
+                  Illinois County <span className="text-destructive">*</span>
+                </Label>
+                <Select value={selectedCounty} onValueChange={handleCountyChange}>
+                  <SelectTrigger className={validationErrors.selectedCounty ? "border-destructive focus:border-destructive" : ""}>
                     <SelectValue placeholder="Select your county" />
                   </SelectTrigger>
                   <SelectContent>
@@ -117,6 +209,12 @@ export const CalculatorCard = () => {
                     ))}
                   </SelectContent>
                 </Select>
+                {validationErrors.selectedCounty && (
+                  <div className="flex items-center gap-1 text-destructive text-sm">
+                    <AlertCircle className="w-4 h-4" />
+                    {validationErrors.selectedCounty}
+                  </div>
+                )}
               </div>
 
               {taxSavings > 0 && (
@@ -135,6 +233,7 @@ export const CalculatorCard = () => {
                   newCarPrice={newCarPrice}
                   selectedCounty={selectedCounty}
                   taxSavings={taxSavings}
+                  onValidationRequired={validateFields}
                 >
                   <Button 
                     variant="calculator" 

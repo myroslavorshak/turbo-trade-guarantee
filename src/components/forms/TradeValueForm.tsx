@@ -15,9 +15,10 @@ interface TradeValueFormProps {
   newCarPrice?: string;
   selectedCounty?: string;
   taxSavings?: number;
+  onValidationRequired?: () => boolean;
 }
 
-export const TradeValueForm = ({ children, tradeValue, newCarPrice, selectedCounty, taxSavings }: TradeValueFormProps) => {
+export const TradeValueForm = ({ children, tradeValue, newCarPrice, selectedCounty, taxSavings, onValidationRequired }: TradeValueFormProps) => {
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -31,6 +32,17 @@ export const TradeValueForm = ({ children, tradeValue, newCarPrice, selectedCoun
     message: ""
   });
   const { toast } = useToast();
+
+  const handleOpenChange = (newOpen: boolean) => {
+    if (newOpen && onValidationRequired) {
+      // Check if calculator fields are valid before opening
+      const isValid = onValidationRequired();
+      if (!isValid) {
+        return; // Don't open the dialog if validation fails
+      }
+    }
+    setOpen(newOpen);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,7 +76,7 @@ export const TradeValueForm = ({ children, tradeValue, newCarPrice, selectedCoun
   };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         {children}
       </DialogTrigger>
