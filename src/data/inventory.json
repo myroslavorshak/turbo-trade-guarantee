@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "make": "Nissan",
+    "model": "Altima",
+    "year": 2024,
+    "price": 28500,
+    "bodyType": "Sedan",
+    "image": "/api/placeholder/400/300",
+    "bundleEligible": true,
+    "features": ["CVT Transmission", "Safety Shield 360", "Apple CarPlay"]
+  },
+  {
+    "id": 2,
+    "make": "Nissan",
+    "model": "Rogue",
+    "year": 2024,
+    "price": 32750,
+    "bodyType": "SUV",
+    "image": "/api/placeholder/400/300",
+    "bundleEligible": true,
+    "features": ["ProPILOT Assist", "Panoramic Moonroof", "AWD"]
+  },
+  {
+    "id": 3,
+    "make": "Nissan",
+    "model": "Sentra",
+    "year": 2024,
+    "price": 21990,
+    "bodyType": "Sedan",
+    "image": "/api/placeholder/400/300",
+    "bundleEligible": true,
+    "features": ["SR Turbo Engine", "Bose Audio", "Intelligent Key"]
+  },
+  {
+    "id": 4,
+    "make": "Nissan",
+    "model": "Murano",
+    "year": 2024,
+    "price": 39900,
+    "bodyType": "SUV",
+    "image": "/api/placeholder/400/300",
+    "bundleEligible": true,
+    "features": ["V6 Engine", "Zero Gravity Seats", "Remote Engine Start"]
+  },
+  {
+    "id": 5,
+    "make": "Nissan",
+    "model": "Pathfinder",
+    "year": 2024,
+    "price": 42500,
+    "bodyType": "SUV",
+    "image": "/api/placeholder/400/300",
+    "bundleEligible": true,
+    "features": ["3-Row Seating", "Tow Package", "Wireless Charging"]
+  },
+  {
+    "id": 6,
+    "make": "Nissan",
+    "model": "Maxima",
+    "year": 2024,
+    "price": 38900,
+    "bodyType": "Sedan",
+    "image": "/api/placeholder/400/300",
+    "bundleEligible": true,
+    "features": ["V6 Engine", "Sport-Tuned Suspension", "Premium Interior"]
+  }
+]
