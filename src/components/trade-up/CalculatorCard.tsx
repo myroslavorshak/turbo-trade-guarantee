@@ -129,7 +129,15 @@ export const CalculatorCard = () => {
               )}
 
               <div className="text-center pt-4">
-                <Button variant="calculator" size="lg" className="w-full md:w-auto">
+                <Button 
+                  variant="calculator" 
+                  size="lg" 
+                  className="w-full md:w-auto"
+                  onClick={() => {
+                    const offerLock = document.getElementById('offer-lock-flow');
+                    offerLock?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
                   Lock In My Trade Value
                 </Button>
               </div>

@@ -12,6 +12,7 @@ import nissanSentra from "@/assets/vehicles/nissan-sentra-2024.jpg";
 import nissanMurano from "@/assets/vehicles/nissan-murano-2024.jpg";
 import nissanPathfinder from "@/assets/vehicles/nissan-pathfinder-2024.jpg";
 import nissanMaxima from "@/assets/vehicles/nissan-maxima-2024.jpg";
+import { useToast } from "@/hooks/use-toast";
 
 interface Vehicle {
   id: number;
@@ -27,6 +28,7 @@ interface Vehicle {
 
 export const InventoryCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const { toast } = useToast();
   
   // Image mapping
   const imageMap: Record<string, string> = {
@@ -36,6 +38,17 @@ export const InventoryCarousel = () => {
     "nissan-murano-2024": nissanMurano,
     "nissan-pathfinder-2024": nissanPathfinder,
     "nissan-maxima-2024": nissanMaxima
+  };
+
+  const handleBundleWithTrade = (vehicle: Vehicle) => {
+    toast({
+      title: "Bundle Package Selected!",
+      description: `${vehicle.year} ${vehicle.make} ${vehicle.model} added to your trade bundle. Complete your trade information below.`,
+    });
+    
+    // Scroll to calculator
+    const calculator = document.getElementById('calculator-card');
+    calculator?.scrollIntoView({ behavior: 'smooth' });
   };
   
   // Filter vehicles that match popular trade body types (SUVs and Sedans)
@@ -98,7 +111,11 @@ export const InventoryCarousel = () => {
                     ))}
                   </div>
 
-                  <Button variant="outline" className="w-full">
+                  <Button 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => handleBundleWithTrade(vehicle)}
+                  >
                     Bundle with Trade
                   </Button>
                 </CardContent>

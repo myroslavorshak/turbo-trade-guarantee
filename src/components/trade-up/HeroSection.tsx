@@ -64,9 +64,9 @@ export const HeroSection = () => {
               variant="urgency" 
               size="xl" 
               onClick={scrollToCalculator}
-              className="shadow-2xl"
+              className="shadow-2xl animate-pulse"
             >
-              Reserve My Bundle Now
+              Reserve My Bundle Now — Save Tax Today
             </Button>
           </div>
         </div>
