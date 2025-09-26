@@ -176,22 +176,6 @@ export const HeroSection = () => {
             </div>
           </div>
         </div>
-
-        {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <p className="text-lg opacity-90 mb-6">
-            Ready to calculate your exact savings?
-          </p>
-          <Button 
-            variant="outline" 
-            size="lg"
-            onClick={scrollToCalculator}
-            className="border-white/30 text-white hover:bg-white/10 hover:text-white"
-          >
-            Use Tax Calculator Below
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-        </div>
       </div>
       
       <ReserveBundleForm 
