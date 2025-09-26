@@ -24,7 +24,7 @@ export const HeroSection = () => {
           <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
             Trade-Up Turbo
             <br />
-            <span className="text-accent">Upgrade without guesswork</span>
+            <span className="text-muted-foreground">Upgrade without guesswork</span>
           </h1>
           
           <p className="text-xl lg:text-2xl opacity-90 mb-8 max-w-3xl mx-auto">
