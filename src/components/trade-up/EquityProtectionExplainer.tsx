@@ -96,14 +96,6 @@ export const EquityProtectionExplainer = () => {
           </div>
 
 
-          <div className="mt-8 text-center">
-            <div className="bg-gradient-hero text-primary-foreground rounded-lg p-6 inline-block">
-              <h3 className="text-xl font-bold mb-2">Maximum Protection</h3>
-              <p className="text-sm opacity-90">
-                Your trade value is protected up to <span className="font-bold">${equityConfig.maxCreditCap}</span> above our initial offer
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
