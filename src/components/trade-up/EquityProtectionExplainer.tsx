@@ -21,11 +21,6 @@ export const EquityProtectionExplainer = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <div className="mb-6">
-              <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
-                Complete Trade-Up Bundle
-              </span>
-            </div>
             <h2 className="text-3xl font-bold mb-4 text-primary">Equity Protection Promise</h2>
             <p className="text-muted-foreground text-lg">
               Part of our comprehensive trade-up package - we guarantee you get the best value for your trade
