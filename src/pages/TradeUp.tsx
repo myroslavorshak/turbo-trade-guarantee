@@ -36,9 +36,9 @@ const TradeUp = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <HeroSection />
+      <EquityProtectionExplainer />
       <CalculatorCard />
       <OfferLockFlow />
-      <EquityProtectionExplainer />
       <InventoryCarousel />
       <TestimonialsSection />
       <FAQSection />
