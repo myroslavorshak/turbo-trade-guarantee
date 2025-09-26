@@ -18,7 +18,7 @@ export const HeroSection = () => {
       />
       <div className="absolute inset-0 bg-gradient-hero/90" />
       
-      <div className="relative container mx-auto px-4 py-16 lg:py-24 z-10">
+      <div className="relative container mx-auto px-4 py-12 lg:py-16 z-10">
         {/* Main Content */}
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">

@@ -62,7 +62,7 @@ export const InventoryCarousel = () => {
   const visibleVehicles = suggestedVehicles.slice(currentSlide * 3, (currentSlide + 1) * 3);
 
   return (
-    <section className="py-20 bg-secondary/10">
+    <section className="py-12 bg-secondary/10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4 text-primary">Suggested New Vehicles</h2>

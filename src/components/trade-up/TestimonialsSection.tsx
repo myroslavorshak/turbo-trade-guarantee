@@ -33,7 +33,7 @@ const testimonials = [
 
 export const TestimonialsSection = () => {
   return (
-    <section className="py-20 bg-background">
+    <section className="py-12 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4 text-primary">Trade Customer Success Stories</h2>
@@ -81,13 +81,6 @@ export const TestimonialsSection = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <div className="inline-flex items-center gap-2 bg-gradient-success text-success-foreground px-6 py-3 rounded-full">
-            <Star className="w-5 h-5" />
-            <span className="font-semibold">4.9/5 Average Rating</span>
-            <span className="opacity-75">• 500+ Trade Reviews</span>
-          </div>
-        </div>
       </div>
     </section>
   );

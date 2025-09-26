@@ -129,7 +129,7 @@ export const CalculatorCard = () => {
   };
 
   return (
-    <section id="calculator-card" className="py-20 bg-gradient-card">
+    <section id="calculator-card" className="py-12 bg-gradient-card">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto">
           <Card className="shadow-calculator border-0 bg-white/95 backdrop-blur-sm">
