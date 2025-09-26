@@ -26,49 +26,49 @@ export const HeroSection = () => {
           </h1>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 text-left">
-            <div className="bg-white/15 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+            <div className="bg-card/95 backdrop-blur-sm rounded-xl p-6 border border-border shadow-card hover:shadow-lg transition-all duration-300 hover:scale-105">
               <div className="flex items-center space-x-3 mb-3">
                 <div className="bg-success/20 rounded-full p-2">
                   <CheckCircle className="w-6 h-6 text-success" />
                 </div>
-                <h3 className="font-bold text-xl">Instant Offer</h3>
+                <h3 className="font-bold text-xl text-card-foreground">Instant Offer</h3>
               </div>
               <div className="space-y-2">
                 <div className="flex items-center space-x-2">
                   <Clock className="w-4 h-4 text-accent" />
-                  <span className="text-sm font-medium">15-minute appraisal</span>
+                  <span className="text-sm font-medium text-card-foreground">15-minute appraisal</span>
                 </div>
-                <p className="text-sm opacity-90 leading-relaxed">Quick professional evaluation with instant 7-day guaranteed offer (valid 300 miles)</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">Quick professional evaluation with instant 7-day guaranteed offer (valid 300 miles)</p>
               </div>
             </div>
             
-            <div className="bg-white/15 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+            <div className="bg-card/95 backdrop-blur-sm rounded-xl p-6 border border-border shadow-card hover:shadow-lg transition-all duration-300 hover:scale-105">
               <div className="flex items-center space-x-3 mb-3">
                 <div className="bg-success/20 rounded-full p-2">
                   <Shield className="w-6 h-6 text-success" />
                 </div>
-                <h3 className="font-bold text-xl">Equity Protection</h3>
+                <h3 className="font-bold text-xl text-card-foreground">Equity Protection</h3>
               </div>
               <div className="space-y-2">
-                <div className="bg-success/10 rounded-lg px-3 py-1 inline-block">
+                <div className="bg-success/20 rounded-lg px-3 py-1 inline-block">
                   <span className="text-sm font-semibold text-success">Up to $300 Credit</span>
                 </div>
-                <p className="text-sm opacity-90 leading-relaxed">Get credit for the difference if we retail your trade for more within 7 days</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">Get credit for the difference if we retail your trade for more within 7 days</p>
               </div>
             </div>
             
-            <div className="bg-white/15 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+            <div className="bg-card/95 backdrop-blur-sm rounded-xl p-6 border border-border shadow-card hover:shadow-lg transition-all duration-300 hover:scale-105">
               <div className="flex items-center space-x-3 mb-3">
                 <div className="bg-accent/20 rounded-full p-2">
                   <Calculator className="w-6 h-6 text-accent" />
                 </div>
-                <h3 className="font-bold text-xl">Tax Savings</h3>
+                <h3 className="font-bold text-xl text-card-foreground">Tax Savings</h3>
               </div>
               <div className="space-y-2">
-                <div className="bg-accent/10 rounded-lg px-3 py-1 inline-block">
+                <div className="bg-accent/20 rounded-lg px-3 py-1 inline-block">
                   <span className="text-sm font-semibold text-accent-foreground">Illinois Advantage</span>
                 </div>
-                <p className="text-sm opacity-90 leading-relaxed">Instant sales tax reduction on your trade value - save hundreds immediately</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">Instant sales tax reduction on your trade value - save hundreds immediately</p>
               </div>
             </div>
           </div>
