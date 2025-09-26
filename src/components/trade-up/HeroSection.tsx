@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Clock, Shield, Calculator } from "lucide-react";
+import { CheckCircle, Clock, Shield, Calculator, ArrowRight, Star } from "lucide-react";
 import heroImage from "@/assets/dealership-hero-new.jpg";
 import { ReserveBundleForm } from "@/components/forms/ReserveBundleForm";
 
@@ -17,128 +17,150 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="relative bg-gradient-hero text-primary-foreground py-20 lg:py-28 overflow-hidden">
+    <section className="relative bg-gradient-hero text-primary-foreground overflow-hidden">
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
         style={{ backgroundImage: `url(${heroImage})` }}
       />
-      <div className="absolute inset-0 bg-gradient-hero/80" />
+      <div className="absolute inset-0 bg-gradient-hero/90" />
       
-      <div className="relative container mx-auto px-4 z-10">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="relative container mx-auto px-4 py-16 lg:py-24 z-10">
+        {/* Main Content */}
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <div className="flex">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-5 h-5 text-accent fill-accent" />
+              ))}
+            </div>
+            <span className="text-sm opacity-90">Trusted by 2,000+ customers</span>
+          </div>
+          
           <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-            Trade-Up Turbo—
+            Trade-Up Turbo
             <br />
             <span className="text-accent">Upgrade without guesswork</span>
           </h1>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 text-left">
-            <div className="group bg-card/95 backdrop-blur-sm rounded-xl p-6 border border-border shadow-card hover:shadow-lg transition-all duration-300 hover:scale-105 relative">
-              <div className="flex items-center space-x-3 mb-3">
-                <div className="bg-success/20 rounded-full p-3">
-                  <CheckCircle className="w-8 h-8 text-success" />
-                </div>
-                <h3 className="font-bold text-2xl text-card-foreground">Instant Offer</h3>
+          <p className="text-xl lg:text-2xl opacity-90 mb-8 max-w-3xl mx-auto">
+            Get your guaranteed 7-day offer, equity protection, and instant Illinois tax savings in one simple bundle.
+          </p>
+
+          <div className="sticky top-4 z-50 mb-12">
+            <Button 
+              size="xl" 
+              onClick={handleReserveBundle}
+              className="shadow-2xl bg-urgency hover:bg-nissan text-urgency-foreground hover:text-nissan-foreground transition-all duration-300 transform hover:scale-105 text-lg px-8 py-4"
+            >
+              Reserve My Bundle Now — Save Tax Today
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
+          </div>
+        </div>
+
+        {/* Feature Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {/* Card 1 */}
+          <div className="group bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 hover:shadow-2xl relative">
+            <div className="text-center">
+              <div className="bg-success/20 rounded-full p-4 w-20 h-20 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <CheckCircle className="w-12 h-12 text-success mx-auto" />
               </div>
-              <div className="flex items-center space-x-2">
+              <h3 className="text-2xl font-bold mb-3">Instant Offer</h3>
+              <div className="flex items-center justify-center gap-2 mb-4">
                 <Clock className="w-5 h-5 text-accent" />
-                <span className="text-lg font-semibold text-card-foreground">15-minute appraisal</span>
+                <span className="text-lg font-semibold">15-minute appraisal</span>
               </div>
-              
-              {/* Hover bubble */}
-              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-4 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-10">
-                <div className="bg-card border border-border rounded-lg p-4 shadow-lg max-w-xs">
-                  <div className="space-y-3">
-                    <p className="text-sm text-muted-foreground leading-relaxed">Quick professional evaluation with instant 7-day guaranteed offer valid for 300 miles. No pressure, no hassle.</p>
-                    <div className="space-y-1 text-xs text-muted-foreground">
-                      <div>• 7-Day validity guarantee</div>
-                      <div>• Valid for 300 miles driven</div>
-                      <div>• Professional assessment</div>
-                    </div>
-                  </div>
-                  {/* Arrow pointing down */}
-                  <div className="absolute top-full left-1/2 transform -translate-x-1/2">
-                    <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-border"></div>
-                    <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-card absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-px"></div>
-                  </div>
-                </div>
+              <div className="bg-success/20 rounded-full px-4 py-2 inline-block">
+                <span className="text-sm font-semibold text-success">7-Day Guarantee</span>
               </div>
             </div>
-            
-            <div className="group bg-card/95 backdrop-blur-sm rounded-xl p-6 border border-border shadow-card hover:shadow-lg transition-all duration-300 hover:scale-105 relative">
-              <div className="flex items-center space-x-3 mb-3">
-                <div className="bg-success/20 rounded-full p-3">
-                  <Shield className="w-8 h-8 text-success" />
-                </div>
-                <h3 className="font-bold text-2xl text-card-foreground">Equity Protection</h3>
-              </div>
-              <div className="bg-success/20 rounded-lg px-3 py-1 inline-block">
-                <span className="text-lg font-semibold text-success">Up to $300 Credit</span>
-              </div>
-              
-              {/* Hover bubble */}
-              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-4 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-10">
-                <div className="bg-card border border-border rounded-lg p-4 shadow-lg max-w-xs">
-                  <div className="space-y-3">
-                    <p className="text-sm text-muted-foreground leading-relaxed">Get credit for the difference if we retail your trade for more within 7 days. Your equity is completely protected.</p>
-                    <div className="space-y-1 text-xs text-muted-foreground">
-                      <div>• Maximum $300 credit guarantee</div>
-                      <div>• Valid for 7 days after appraisal</div>
-                      <div>• Automatic credit processing</div>
-                    </div>
-                  </div>
-                  {/* Arrow pointing down */}
-                  <div className="absolute top-full left-1/2 transform -translate-x-1/2">
-                    <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-border"></div>
-                    <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-card absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-px"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="group bg-card/95 backdrop-blur-sm rounded-xl p-6 border border-border shadow-card hover:shadow-lg transition-all duration-300 hover:scale-105 relative">
-              <div className="flex items-center space-x-3 mb-3">
-                <div className="bg-accent/20 rounded-full p-3">
-                  <Calculator className="w-8 h-8 text-accent" />
-                </div>
-                <h3 className="font-bold text-2xl text-card-foreground">Tax Savings</h3>
-              </div>
-              <div className="bg-accent/20 rounded-lg px-3 py-1 inline-block">
-                <span className="text-lg font-semibold text-accent-foreground">Illinois Advantage</span>
-              </div>
-              
-              {/* Hover bubble */}
-              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-4 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-10">
-                <div className="bg-card border border-border rounded-lg p-4 shadow-lg max-w-xs">
-                  <div className="space-y-3">
-                    <p className="text-sm text-muted-foreground leading-relaxed">Instant sales tax reduction on your trade value - save hundreds immediately on your Illinois vehicle purchase.</p>
-                    <div className="space-y-1 text-xs text-muted-foreground">
-                      <div>• Immediate tax credit applied</div>
-                      <div>• Based on trade vehicle value</div>
-                      <div>• Hundreds in instant savings</div>
-                    </div>
-                  </div>
-                  {/* Arrow pointing down */}
-                  <div className="absolute top-full left-1/2 transform -translate-x-1/2">
-                    <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-border"></div>
-                    <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-card absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-px"></div>
-                  </div>
-                </div>
+
+            {/* Hover Details */}
+            <div className="absolute inset-0 bg-card/95 backdrop-blur-sm rounded-2xl p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 text-card-foreground">
+              <div className="h-full flex flex-col justify-center text-center">
+                <CheckCircle className="w-16 h-16 text-success mx-auto mb-4" />
+                <h3 className="text-xl font-bold mb-3">Instant Offer Details</h3>
+                <ul className="text-sm space-y-2 text-left">
+                  <li>• Professional 15-minute evaluation</li>
+                  <li>• Guaranteed offer valid for 7 days</li>
+                  <li>• Valid for 300 miles of driving</li>
+                  <li>• No pressure, no obligation</li>
+                </ul>
               </div>
             </div>
           </div>
 
-          <div className="sticky top-4 z-50">
-            <Button 
-              variant="default" 
-              size="xl" 
-              onClick={handleReserveBundle}
-              className="shadow-2xl bg-urgency hover:bg-nissan text-urgency-foreground hover:text-nissan-foreground transition-all duration-300 transform hover:scale-105"
-            >
-              Reserve My Bundle Now — Save Tax Today
-            </Button>
+          {/* Card 2 */}
+          <div className="group bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 hover:shadow-2xl relative">
+            <div className="text-center">
+              <div className="bg-success/20 rounded-full p-4 w-20 h-20 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Shield className="w-12 h-12 text-success mx-auto" />
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Equity Protection</h3>
+              <div className="bg-success/30 rounded-full px-6 py-3 inline-block">
+                <span className="text-lg font-bold text-white">Up to $300 Credit</span>
+              </div>
+            </div>
+
+            {/* Hover Details */}
+            <div className="absolute inset-0 bg-card/95 backdrop-blur-sm rounded-2xl p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 text-card-foreground">
+              <div className="h-full flex flex-col justify-center text-center">
+                <Shield className="w-16 h-16 text-success mx-auto mb-4" />
+                <h3 className="text-xl font-bold mb-3">Protection Details</h3>
+                <ul className="text-sm space-y-2 text-left">
+                  <li>• Get credit if we retail for more</li>
+                  <li>• Maximum $300 credit guarantee</li>
+                  <li>• Valid for 7 days after appraisal</li>
+                  <li>• Automatic processing</li>
+                </ul>
+              </div>
+            </div>
           </div>
+
+          {/* Card 3 */}
+          <div className="group bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 hover:shadow-2xl relative">
+            <div className="text-center">
+              <div className="bg-accent/20 rounded-full p-4 w-20 h-20 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Calculator className="w-12 h-12 text-accent mx-auto" />
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Tax Savings</h3>
+              <div className="bg-accent/30 rounded-full px-6 py-3 inline-block">
+                <span className="text-lg font-bold text-accent-foreground">Illinois Advantage</span>
+              </div>
+            </div>
+
+            {/* Hover Details */}
+            <div className="absolute inset-0 bg-card/95 backdrop-blur-sm rounded-2xl p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 text-card-foreground">
+              <div className="h-full flex flex-col justify-center text-center">
+                <Calculator className="w-16 h-16 text-accent mx-auto mb-4" />
+                <h3 className="text-xl font-bold mb-3">Tax Savings Details</h3>
+                <ul className="text-sm space-y-2 text-left">
+                  <li>• Instant sales tax reduction</li>
+                  <li>• Based on your trade value</li>
+                  <li>• Save hundreds immediately</li>
+                  <li>• Applied at purchase</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="text-center mt-16">
+          <p className="text-lg opacity-90 mb-6">
+            Ready to calculate your exact savings?
+          </p>
+          <Button 
+            variant="outline" 
+            size="lg"
+            onClick={scrollToCalculator}
+            className="border-white/30 text-white hover:bg-white/10 hover:text-white"
+          >
+            Use Tax Calculator Below
+            <ArrowRight className="w-4 h-4 ml-2" />
+          </Button>
         </div>
       </div>
       
