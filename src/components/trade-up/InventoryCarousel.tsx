@@ -1,8 +1,9 @@
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Car } from "lucide-react";
-import { useState } from "react";
+import { ReserveBundleForm } from "@/components/forms/ReserveBundleForm";
 import inventoryData from "@/data/inventory.json";
 
 // Import vehicle images
@@ -12,7 +13,6 @@ import nissanSentra from "@/assets/vehicles/nissan-sentra-2024.jpg";
 import nissanMurano from "@/assets/vehicles/nissan-murano-2024.jpg";
 import nissanPathfinder from "@/assets/vehicles/nissan-pathfinder-2024.jpg";
 import nissanMaxima from "@/assets/vehicles/nissan-maxima-2024.jpg";
-import { useToast } from "@/hooks/use-toast";
 
 interface Vehicle {
   id: number;
@@ -28,7 +28,8 @@ interface Vehicle {
 
 export const InventoryCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const { toast } = useToast();
+  const [isReserveFormOpen, setIsReserveFormOpen] = useState(false);
+  const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | null>(null);
   
   // Image mapping
   const imageMap: Record<string, string> = {
@@ -41,14 +42,8 @@ export const InventoryCarousel = () => {
   };
 
   const handleBundleWithTrade = (vehicle: Vehicle) => {
-    toast({
-      title: "Bundle Package Selected!",
-      description: `${vehicle.year} ${vehicle.make} ${vehicle.model} added to your trade bundle. Complete your trade information below.`,
-    });
-    
-    // Scroll to calculator
-    const calculator = document.getElementById('calculator-card');
-    calculator?.scrollIntoView({ behavior: 'smooth' });
+    setSelectedVehicle(vehicle);
+    setIsReserveFormOpen(true);
   };
   
   // Filter vehicles that match popular trade body types (SUVs and Sedans)
@@ -112,7 +107,7 @@ export const InventoryCarousel = () => {
                   </div>
 
                   <Button 
-                    variant="outline" 
+                    variant="success" 
                     className="w-full"
                     onClick={() => handleBundleWithTrade(vehicle)}
                   >
@@ -158,6 +153,12 @@ export const InventoryCarousel = () => {
           )}
         </div>
       </div>
+      
+      <ReserveBundleForm 
+        isOpen={isReserveFormOpen}
+        onClose={() => setIsReserveFormOpen(false)}
+        preselectedVehicle={selectedVehicle}
+      />
     </section>
   );
 };

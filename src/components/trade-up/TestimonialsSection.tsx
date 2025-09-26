@@ -9,7 +9,7 @@ const testimonials = [
     rating: 5,
     quote: "The 7-day offer gave me time to shop around, but nobody could beat their price. The equity protection actually kicked in—I got an extra $150 credit!",
     tradeVehicle: "2019 Honda Accord",
-    newVehicle: "2024 Nissan Altima"
+    newVehicle: "2025 Nissan Altima"
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const testimonials = [
     rating: 5,
     quote: "Saved over $2,000 in sales tax with my trade-in. The whole process took 20 minutes and they honored their online quote exactly.",
     tradeVehicle: "2018 Ford Explorer",
-    newVehicle: "2024 Nissan Rogue"
+    newVehicle: "2025 Nissan Rogue"
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const testimonials = [
     rating: 5,
     quote: "I was skeptical about the equity protection, but when they sold my trade for more, I actually got a check in the mail. Incredible service!",
     tradeVehicle: "2020 Toyota Camry",
-    newVehicle: "2024 Nissan Murano"
+    newVehicle: "2025 Nissan Murano"
   }
 ];
 

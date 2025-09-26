@@ -29,9 +29,16 @@ interface ReserveBundleFormProps {
     email: string;
     phone: string;
   } | null;
+  preselectedVehicle?: {
+    id: number;
+    make: string;
+    model: string;
+    year: number;
+    price: number;
+  } | null;
 }
 
-export const ReserveBundleForm = ({ isOpen, onClose, prefilledData }: ReserveBundleFormProps) => {
+export const ReserveBundleForm = ({ isOpen, onClose, prefilledData, preselectedVehicle }: ReserveBundleFormProps) => {
   const [formData, setFormData] = useState({
     customerName: "",
     email: "",
@@ -40,11 +47,11 @@ export const ReserveBundleForm = ({ isOpen, onClose, prefilledData }: ReserveBun
     tradeYear: "",
     tradeMileage: "",
     tradeVin: "",
-    newVehicleId: "",
+    newVehicleId: preselectedVehicle?.id.toString() || "",
     preferredContactTime: ""
   });
 
-  // Update form data when prefilled data changes
+  // Update form data when prefilled data or preselected vehicle changes
   useEffect(() => {
     if (prefilledData) {
       setFormData(prev => ({
@@ -53,7 +60,13 @@ export const ReserveBundleForm = ({ isOpen, onClose, prefilledData }: ReserveBun
         phone: prefilledData.phone
       }));
     }
-  }, [prefilledData]);
+    if (preselectedVehicle) {
+      setFormData(prev => ({
+        ...prev,
+        newVehicleId: preselectedVehicle.id.toString()
+      }));
+    }
+  }, [prefilledData, preselectedVehicle]);
 
   const eligibleVehicles = inventoryData.filter(vehicle => vehicle.bundleEligible);
 
