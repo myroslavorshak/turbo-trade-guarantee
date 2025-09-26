@@ -17,9 +17,8 @@ export const BundleOverview = () => {
                   boxShadow: '0 8px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.1)',
                   backdropFilter: 'blur(16px)'
                 }}>
-                  <Shield className="w-10 h-10 mx-auto" style={{
-                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3)) drop-shadow(0 0 8px rgba(59,130,246,0.3))',
-                    color: '#3b82f6'
+                  <Shield className="w-10 h-10 text-primary mx-auto" style={{
+                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3)) drop-shadow(0 0 8px rgba(59,130,246,0.3))'
                   }} />
                 </div>
                 <div className="font-semibold text-lg mb-2 text-card-foreground">Equity Protection</div>
@@ -32,9 +31,8 @@ export const BundleOverview = () => {
                   boxShadow: '0 8px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.1)',
                   backdropFilter: 'blur(16px)'
                 }}>
-                  <Calculator className="w-10 h-10 mx-auto" style={{
-                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3)) drop-shadow(0 0 8px rgba(59,130,246,0.3))',
-                    color: '#3b82f6'
+                  <Calculator className="w-10 h-10 text-primary mx-auto" style={{
+                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3)) drop-shadow(0 0 8px rgba(59,130,246,0.3))'
                   }} />
                 </div>
                 <div className="font-semibold text-lg mb-2 text-card-foreground">Tax Savings</div>
@@ -47,9 +45,8 @@ export const BundleOverview = () => {
                   boxShadow: '0 8px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.1)',
                   backdropFilter: 'blur(16px)'
                 }}>
-                  <DollarSign className="w-10 h-10 mx-auto" style={{
-                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3)) drop-shadow(0 0 8px rgba(59,130,246,0.3))',
-                    color: '#3b82f6'
+                  <DollarSign className="w-10 h-10 text-primary mx-auto" style={{
+                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3)) drop-shadow(0 0 8px rgba(59,130,246,0.3))'
                   }} />
                 </div>
                 <div className="font-semibold text-lg mb-2 text-card-foreground">Special Financing</div>
