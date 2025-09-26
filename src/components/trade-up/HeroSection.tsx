@@ -64,23 +64,33 @@ export const HeroSection = () => {
           {/* Card 1 */}
           <div className="group bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 hover:shadow-2xl relative">
             <div className="text-center">
-              <div className="bg-success/20 rounded-full p-4 w-20 h-20 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <CheckCircle className="w-12 h-12 text-success mx-auto" />
+              <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 w-20 h-20 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-xl" style={{
+                background: 'linear-gradient(145deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1))',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.1)'
+              }}>
+                <CheckCircle className="w-12 h-12 text-white mx-auto drop-shadow-lg" style={{
+                  filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3)) drop-shadow(0 0 8px rgba(255,255,255,0.3))'
+                }} />
               </div>
               <h3 className="text-2xl font-bold mb-3">Instant Offer</h3>
               <div className="flex items-center justify-center gap-2 mb-4">
-                <Clock className="w-5 h-5 text-accent" />
+                <Clock className="w-5 h-5 text-white/90 drop-shadow-sm" />
                 <span className="text-lg font-semibold">15-minute appraisal</span>
               </div>
-              <div className="bg-success/20 rounded-full px-4 py-2 inline-block">
-                <span className="text-sm font-semibold text-success">7-Day Guarantee</span>
+              <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 inline-block border border-white/30">
+                <span className="text-sm font-semibold text-white">7-Day Guarantee</span>
               </div>
             </div>
 
             {/* Hover Details */}
             <div className="absolute inset-0 bg-card/95 backdrop-blur-sm rounded-2xl p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 text-card-foreground">
               <div className="h-full flex flex-col justify-center text-center">
-                <CheckCircle className="w-16 h-16 text-success mx-auto mb-4" />
+                <div className="bg-primary/20 rounded-full p-3 w-16 h-16 mx-auto mb-4" style={{
+                  background: 'linear-gradient(145deg, rgba(59,130,246,0.3), rgba(59,130,246,0.1))',
+                  boxShadow: '0 4px 16px rgba(59,130,246,0.2), inset 0 1px 0 rgba(255,255,255,0.1)'
+                }}>
+                  <CheckCircle className="w-10 h-10 text-primary mx-auto" />
+                </div>
                 <h3 className="text-xl font-bold mb-3">Instant Offer Details</h3>
                 <ul className="text-sm space-y-2 text-left">
                   <li>• Professional 15-minute evaluation</li>
@@ -95,11 +105,16 @@ export const HeroSection = () => {
           {/* Card 2 */}
           <div className="group bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 hover:shadow-2xl relative">
             <div className="text-center">
-              <div className="bg-success/20 rounded-full p-4 w-20 h-20 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Shield className="w-12 h-12 text-success mx-auto" />
+              <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 w-20 h-20 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-xl" style={{
+                background: 'linear-gradient(145deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1))',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.1)'
+              }}>
+                <Shield className="w-12 h-12 text-white mx-auto drop-shadow-lg" style={{
+                  filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3)) drop-shadow(0 0 8px rgba(255,255,255,0.3))'
+                }} />
               </div>
               <h3 className="text-2xl font-bold mb-3">Equity Protection</h3>
-              <div className="bg-success/30 rounded-full px-6 py-3 inline-block">
+              <div className="bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 inline-block border border-white/30">
                 <span className="text-lg font-bold text-white">Up to $300 Credit</span>
               </div>
             </div>
@@ -107,7 +122,12 @@ export const HeroSection = () => {
             {/* Hover Details */}
             <div className="absolute inset-0 bg-card/95 backdrop-blur-sm rounded-2xl p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 text-card-foreground">
               <div className="h-full flex flex-col justify-center text-center">
-                <Shield className="w-16 h-16 text-success mx-auto mb-4" />
+                <div className="bg-primary/20 rounded-full p-3 w-16 h-16 mx-auto mb-4" style={{
+                  background: 'linear-gradient(145deg, rgba(59,130,246,0.3), rgba(59,130,246,0.1))',
+                  boxShadow: '0 4px 16px rgba(59,130,246,0.2), inset 0 1px 0 rgba(255,255,255,0.1)'
+                }}>
+                  <Shield className="w-10 h-10 text-primary mx-auto" />
+                </div>
                 <h3 className="text-xl font-bold mb-3">Protection Details</h3>
                 <ul className="text-sm space-y-2 text-left">
                   <li>• Get credit if we retail for more</li>
@@ -122,19 +142,29 @@ export const HeroSection = () => {
           {/* Card 3 */}
           <div className="group bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 hover:shadow-2xl relative">
             <div className="text-center">
-              <div className="bg-accent/20 rounded-full p-4 w-20 h-20 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Calculator className="w-12 h-12 text-accent mx-auto" />
+              <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 w-20 h-20 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-xl" style={{
+                background: 'linear-gradient(145deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1))',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.1)'
+              }}>
+                <Calculator className="w-12 h-12 text-white mx-auto drop-shadow-lg" style={{
+                  filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3)) drop-shadow(0 0 8px rgba(255,255,255,0.3))'
+                }} />
               </div>
               <h3 className="text-2xl font-bold mb-3">Tax Savings</h3>
-              <div className="bg-accent/30 rounded-full px-6 py-3 inline-block">
-                <span className="text-lg font-bold text-accent-foreground">Illinois Advantage</span>
+              <div className="bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 inline-block border border-white/30">
+                <span className="text-lg font-bold text-white">Illinois Advantage</span>
               </div>
             </div>
 
             {/* Hover Details */}
             <div className="absolute inset-0 bg-card/95 backdrop-blur-sm rounded-2xl p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 text-card-foreground">
               <div className="h-full flex flex-col justify-center text-center">
-                <Calculator className="w-16 h-16 text-accent mx-auto mb-4" />
+                <div className="bg-primary/20 rounded-full p-3 w-16 h-16 mx-auto mb-4" style={{
+                  background: 'linear-gradient(145deg, rgba(59,130,246,0.3), rgba(59,130,246,0.1))',
+                  boxShadow: '0 4px 16px rgba(59,130,246,0.2), inset 0 1px 0 rgba(255,255,255,0.1)'
+                }}>
+                  <Calculator className="w-10 h-10 text-primary mx-auto" />
+                </div>
                 <h3 className="text-xl font-bold mb-3">Tax Savings Details</h3>
                 <ul className="text-sm space-y-2 text-left">
                   <li>• Instant sales tax reduction</li>
