@@ -6,7 +6,21 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Car, DollarSign, Calendar } from "lucide-react";
 import { toast } from "sonner";
+import { z } from "zod";
 import inventoryData from "@/data/inventory.json";
+
+// Validation schema for security
+const reservationSchema = z.object({
+  customerName: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  phone: z.string().trim().min(1, "Phone number is required").max(20, "Phone number must be less than 20 characters"),
+  tradeVehicle: z.string().trim().min(1, "Vehicle make and model is required").max(100, "Vehicle description must be less than 100 characters"),
+  tradeYear: z.string().trim().min(1, "Year is required").max(4, "Year must be 4 characters or less"),
+  tradeMileage: z.string().trim().max(10, "Mileage must be less than 10 characters"),
+  tradeVin: z.string().trim().max(17, "VIN must be 17 characters or less").optional(),
+  newVehicleId: z.string().min(1, "Please select a vehicle"),
+  preferredContactTime: z.string().optional()
+});
 
 interface ReserveBundleFormProps {
   isOpen: boolean;
@@ -21,6 +35,7 @@ export const ReserveBundleForm = ({ isOpen, onClose }: ReserveBundleFormProps) =
     tradeVehicle: "",
     tradeYear: "",
     tradeMileage: "",
+    tradeVin: "",
     newVehicleId: "",
     preferredContactTime: ""
   });
@@ -30,31 +45,52 @@ export const ReserveBundleForm = ({ isOpen, onClose }: ReserveBundleFormProps) =
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.customerName || !formData.email || !formData.phone || !formData.tradeVehicle || !formData.newVehicleId) {
-      toast.error("Please fill in all required fields");
-      return;
-    }
+    // Validate form data for security
+    try {
+      const validatedData = reservationSchema.parse(formData);
+      
+      // Additional VIN validation if provided
+      if (validatedData.tradeVin && validatedData.tradeVin.length > 0) {
+        if (validatedData.tradeVin.length !== 17) {
+          toast.error("VIN must be exactly 17 characters");
+          return;
+        }
+        // VIN should only contain alphanumeric characters (no O, I, Q)
+        const vinPattern = /^[A-HJ-NPR-Z0-9]{17}$/i;
+        if (!vinPattern.test(validatedData.tradeVin)) {
+          toast.error("Invalid VIN format");
+          return;
+        }
+      }
 
-    // Here you would typically send the data to your backend
-    console.log("Bundle reservation submitted:", formData);
-    
-    toast.success("Bundle reserved successfully! We'll contact you within 2 hours to schedule your appraisal.", {
-      duration: 5000,
-    });
-    
-    onClose();
-    
-    // Reset form
-    setFormData({
-      customerName: "",
-      email: "",
-      phone: "",
-      tradeVehicle: "",
-      tradeYear: "",
-      tradeMileage: "",
-      newVehicleId: "",
-      preferredContactTime: ""
-    });
+      console.log("Bundle reservation submitted:", validatedData);
+      
+      toast.success("Bundle reserved successfully! We'll contact you within 2 hours to schedule your appraisal.", {
+        duration: 5000,
+      });
+      
+      onClose();
+      
+      // Reset form
+      setFormData({
+        customerName: "",
+        email: "",
+        phone: "",
+        tradeVehicle: "",
+        tradeYear: "",
+        tradeMileage: "",
+        tradeVin: "",
+        newVehicleId: "",
+        preferredContactTime: ""
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const firstError = error.issues[0];
+        toast.error(firstError.message);
+      } else {
+        toast.error("Please check your input and try again");
+      }
+    }
   };
 
   const selectedVehicle = eligibleVehicles.find(v => v.id.toString() === formData.newVehicleId);
@@ -166,14 +202,32 @@ export const ReserveBundleForm = ({ isOpen, onClose }: ReserveBundleFormProps) =
               </div>
             </div>
 
-            <div>
-              <Label htmlFor="tradeMileage">Approximate Mileage</Label>
-              <Input
-                id="tradeMileage"
-                value={formData.tradeMileage}
-                onChange={(e) => setFormData(prev => ({ ...prev, tradeMileage: e.target.value }))}
-                placeholder="65,000"
-              />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <Label htmlFor="tradeMileage">Approximate Mileage</Label>
+                <Input
+                  id="tradeMileage"
+                  value={formData.tradeMileage}
+                  onChange={(e) => setFormData(prev => ({ ...prev, tradeMileage: e.target.value }))}
+                  placeholder="65,000"
+                  maxLength={10}
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="tradeVin">VIN (Optional)</Label>
+                <Input
+                  id="tradeVin"
+                  value={formData.tradeVin}
+                  onChange={(e) => setFormData(prev => ({ ...prev, tradeVin: e.target.value.toUpperCase() }))}
+                  placeholder="1HGBH41JXMN109186"
+                  maxLength={17}
+                  className="font-mono"
+                />
+                {formData.tradeVin && formData.tradeVin.length > 0 && formData.tradeVin.length !== 17 && (
+                  <p className="text-xs text-destructive mt-1">VIN must be exactly 17 characters</p>
+                )}
+              </div>
             </div>
           </div>
 
