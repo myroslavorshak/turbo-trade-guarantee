@@ -18,7 +18,8 @@ export const BundleOverview = () => {
                   backdropFilter: 'blur(16px)'
                 }}>
                   <Shield className="w-10 h-10 text-primary mx-auto" style={{
-                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3)) drop-shadow(0 0 8px rgba(59,130,246,0.3))'
+                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3)) drop-shadow(0 0 8px rgba(255,255,255,0.3))',
+                    color: 'white'
                   }} />
                 </div>
                 <div className="font-semibold text-lg mb-2 text-card-foreground">Equity Protection</div>
@@ -31,8 +32,9 @@ export const BundleOverview = () => {
                   boxShadow: '0 8px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.1)',
                   backdropFilter: 'blur(16px)'
                 }}>
-                  <Calculator className="w-10 h-10 text-success mx-auto" style={{
-                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3)) drop-shadow(0 0 8px rgba(34,197,94,0.3))'
+                  <Calculator className="w-10 h-10 text-primary mx-auto" style={{
+                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3)) drop-shadow(0 0 8px rgba(255,255,255,0.3))',
+                    color: 'white'
                   }} />
                 </div>
                 <div className="font-semibold text-lg mb-2 text-card-foreground">Tax Savings</div>
@@ -45,8 +47,9 @@ export const BundleOverview = () => {
                   boxShadow: '0 8px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.1)',
                   backdropFilter: 'blur(16px)'
                 }}>
-                  <DollarSign className="w-10 h-10 text-accent mx-auto" style={{
-                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3)) drop-shadow(0 0 8px rgba(251,191,36,0.3))'
+                  <DollarSign className="w-10 h-10 text-primary mx-auto" style={{
+                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3)) drop-shadow(0 0 8px rgba(255,255,255,0.3))',
+                    color: 'white'
                   }} />
                 </div>
                 <div className="font-semibold text-lg mb-2 text-card-foreground">Special Financing</div>
