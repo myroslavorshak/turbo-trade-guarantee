@@ -28,15 +28,6 @@ export const HeroSection = () => {
       <div className="relative container mx-auto px-4 py-16 lg:py-24 z-10">
         {/* Main Content */}
         <div className="max-w-4xl mx-auto text-center mb-16">
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <div className="flex">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-5 h-5 text-accent fill-accent" />
-              ))}
-            </div>
-            <span className="text-sm opacity-90">Trusted by 2,000+ customers</span>
-          </div>
-          
           <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
             Trade-Up Turbo
             <br />
