@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Lock, Calendar, Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { ReserveBundleForm } from "@/components/forms/ReserveBundleForm";
 
 interface OfferToken {
   expiryDate: string;
@@ -13,10 +14,17 @@ interface OfferToken {
   generated: boolean;
 }
 
+interface PrefilledData {
+  email: string;
+  phone: string;
+}
+
 export const OfferLockFlow = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [offerToken, setOfferToken] = useState<OfferToken | null>(null);
+  const [isReserveFormOpen, setIsReserveFormOpen] = useState(false);
+  const [prefilledData, setPrefilledData] = useState<PrefilledData | null>(null);
   const { toast } = useToast();
 
   const generateOffer = () => {
@@ -29,26 +37,12 @@ export const OfferLockFlow = () => {
       return;
     }
 
-    const expiryDate = new Date();
-    expiryDate.setDate(expiryDate.getDate() + 7);
-    
-    const token: OfferToken = {
-      expiryDate: expiryDate.toLocaleDateString('en-US', { 
-        weekday: 'long', 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
-      }),
+    // Set prefilled data and open the reserve form
+    setPrefilledData({
       email,
-      generated: true
-    };
-
-    setOfferToken(token);
-    
-    toast({
-      title: "7-Day Offer Generated!",
-      description: "Your trade-in offer has been locked and emailed to you.",
+      phone
     });
+    setIsReserveFormOpen(true);
   };
 
   return (
@@ -99,7 +93,7 @@ export const OfferLockFlow = () => {
                     size="lg" 
                     className="w-full"
                   >
-                    Generate My 7-Day Offer
+                    Reserve My Complete Bundle
                   </Button>
                 </>
               ) : (
@@ -138,6 +132,12 @@ export const OfferLockFlow = () => {
           </Card>
         </div>
       </div>
+      
+      <ReserveBundleForm 
+        isOpen={isReserveFormOpen}
+        onClose={() => setIsReserveFormOpen(false)}
+        prefilledData={prefilledData}
+      />
     </section>
   );
 };

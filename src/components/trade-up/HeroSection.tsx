@@ -2,18 +2,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Clock, Shield, Calculator, ArrowRight, Star } from "lucide-react";
 import heroImage from "@/assets/dealership-hero-new.jpg";
-import { ReserveBundleForm } from "@/components/forms/ReserveBundleForm";
 
 export const HeroSection = () => {
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  
   const scrollToCalculator = () => {
     const calculator = document.getElementById('calculator-card');
     calculator?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const handleReserveBundle = () => {
-    setIsFormOpen(true);
   };
 
   return (
@@ -41,10 +34,10 @@ export const HeroSection = () => {
           <div className="sticky top-4 z-50 mb-12">
             <Button 
               size="xl" 
-              onClick={handleReserveBundle}
+              onClick={scrollToCalculator}
               className="shadow-2xl bg-urgency hover:bg-nissan text-urgency-foreground hover:text-nissan-foreground transition-all duration-300 transform hover:scale-105 text-lg px-8 py-4"
             >
-              Reserve My Bundle Now — Save Tax Today
+              Get Started — Calculate Your Savings
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </div>
@@ -168,11 +161,6 @@ export const HeroSection = () => {
           </div>
         </div>
       </div>
-      
-      <ReserveBundleForm 
-        isOpen={isFormOpen}
-        onClose={() => setIsFormOpen(false)}
-      />
     </section>
   );
 };

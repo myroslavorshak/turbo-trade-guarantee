@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -25,9 +25,13 @@ const reservationSchema = z.object({
 interface ReserveBundleFormProps {
   isOpen: boolean;
   onClose: () => void;
+  prefilledData?: {
+    email: string;
+    phone: string;
+  } | null;
 }
 
-export const ReserveBundleForm = ({ isOpen, onClose }: ReserveBundleFormProps) => {
+export const ReserveBundleForm = ({ isOpen, onClose, prefilledData }: ReserveBundleFormProps) => {
   const [formData, setFormData] = useState({
     customerName: "",
     email: "",
@@ -39,6 +43,17 @@ export const ReserveBundleForm = ({ isOpen, onClose }: ReserveBundleFormProps) =
     newVehicleId: "",
     preferredContactTime: ""
   });
+
+  // Update form data when prefilled data changes
+  useEffect(() => {
+    if (prefilledData) {
+      setFormData(prev => ({
+        ...prev,
+        email: prefilledData.email,
+        phone: prefilledData.phone
+      }));
+    }
+  }, [prefilledData]);
 
   const eligibleVehicles = inventoryData.filter(vehicle => vehicle.bundleEligible);
 
