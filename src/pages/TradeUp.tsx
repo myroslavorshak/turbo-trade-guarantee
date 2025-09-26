@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/trade-up/HeroSection";
+import { BundleOverview } from "@/components/trade-up/BundleOverview";
 import { CalculatorCard } from "@/components/trade-up/CalculatorCard";
 import { OfferLockFlow } from "@/components/trade-up/OfferLockFlow";
 import { EquityProtectionExplainer } from "@/components/trade-up/EquityProtectionExplainer";
@@ -36,6 +37,7 @@ const TradeUp = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <HeroSection />
+      <BundleOverview />
       <EquityProtectionExplainer />
       <CalculatorCard />
       <OfferLockFlow />

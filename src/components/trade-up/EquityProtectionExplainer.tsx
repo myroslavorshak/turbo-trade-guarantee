@@ -100,34 +100,6 @@ export const EquityProtectionExplainer = () => {
             </Card>
           </div>
 
-          <div className="mt-8 mb-8">
-            <div className="bg-muted/30 rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-4 text-center">Your Complete Trade-Up Bundle Includes:</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                <div className="text-center">
-                  <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground mx-auto mb-2">
-                    <Shield className="w-4 h-4" />
-                  </div>
-                  <div className="font-medium">Equity Protection</div>
-                  <div className="text-muted-foreground">Up to $300 credit guarantee</div>
-                </div>
-                <div className="text-center">
-                  <div className="w-8 h-8 bg-success rounded-full flex items-center justify-center text-success-foreground mx-auto mb-2">
-                    <Calculator className="w-4 h-4" />
-                  </div>
-                  <div className="font-medium">Tax Savings</div>
-                  <div className="text-muted-foreground">Instant IL sales tax reduction</div>
-                </div>
-                <div className="text-center">
-                  <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-accent-foreground mx-auto mb-2">
-                    <DollarSign className="w-4 h-4" />
-                  </div>
-                  <div className="font-medium">Special Financing</div>
-                  <div className="text-muted-foreground">0% APR for 60 months*</div>
-                </div>
-              </div>
-            </div>
-          </div>
 
           <div className="mt-8 text-center">
             <div className="bg-gradient-hero text-primary-foreground rounded-lg p-6 inline-block">
