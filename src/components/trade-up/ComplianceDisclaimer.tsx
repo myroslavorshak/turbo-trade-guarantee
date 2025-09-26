@@ -3,7 +3,7 @@ import { AlertTriangle, FileText } from "lucide-react";
 
 export const ComplianceDisclaimer = () => {
   return (
-    <section className="py-16 bg-muted/20">
+    <section className="py-20 bg-muted/20">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">

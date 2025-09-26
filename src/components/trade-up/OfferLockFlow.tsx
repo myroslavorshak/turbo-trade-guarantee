@@ -52,7 +52,7 @@ export const OfferLockFlow = () => {
   };
 
   return (
-    <section id="offer-lock-flow" className="py-16 bg-secondary/30">
+    <section id="offer-lock-flow" className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-8">
